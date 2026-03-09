@@ -1,3 +1,5 @@
+import java.util.Scanner;
+import java.util.ArrayList;
 /* This class should implement the DisplayableMaze interface */
 public class Maze implements DisplayableMaze{
 
@@ -57,6 +59,39 @@ public class Maze implements DisplayableMaze{
         return this.finish;
     }
 
+    public void makeMaze(Scanner file) {
+        ArrayList<String> lines = new ArrayList<>();
+
+        while (file.hasNextLine()) {
+            lines.add(file.nextLine());
+        }
+        this.height = lines.size();
+        this.width = lines.get(0).length();
+        mazeGrid = new MazeContents[this.height][this.width];
+        for (int i = 0; i < height; i++) {
+            String line = lines.get(i);
+
+            for (int j = 0; j < width; j++) {
+                char c = line.charAt(j);
+
+                if (c == '#') {
+                    mazeGrid[i][j] = MazeContents.WALL;
+                }
+                else if (c == 'S') {
+                    mazeGrid[i][j] = MazeContents.OPEN;
+                    start = new MazeLocation(i, j);
+                }
+                else if (c == 'F') {
+                    mazeGrid[i][j] = MazeContents.OPEN;
+                    finish = new MazeLocation(i, j);
+                }
+                else {
+                    mazeGrid[i][j] = MazeContents.OPEN;
+                }
+            }
+        }
+    }
+
     public void initDemoMaze(){ //String fileName, 
         this.height = 10;
         this.width = 8;
@@ -74,10 +109,5 @@ public class Maze implements DisplayableMaze{
         this.mazeGrid[7][0] = MazeContents.WALL; this.mazeGrid[7][1] = MazeContents.OPEN; this.mazeGrid[7][2] = MazeContents.WALL; this.mazeGrid[7][3] = MazeContents.OPEN; this.mazeGrid[7][4] = MazeContents.OPEN; this.mazeGrid[7][5] = MazeContents.WALL; this.mazeGrid[7][6] = MazeContents.OPEN; this.mazeGrid[7][7] = MazeContents.WALL;
         this.mazeGrid[8][0] = MazeContents.WALL; this.mazeGrid[8][1] = MazeContents.OPEN; this.mazeGrid[8][2] = MazeContents.OPEN; this.mazeGrid[8][3] = MazeContents.WALL; this.mazeGrid[8][4] = MazeContents.OPEN; this.mazeGrid[8][5] = MazeContents.WALL; this.mazeGrid[8][6] = MazeContents.OPEN; this.mazeGrid[8][7] = MazeContents.WALL;
         this.mazeGrid[9][0] = MazeContents.WALL; this.mazeGrid[9][1] = MazeContents.WALL; this.mazeGrid[9][2] = MazeContents.WALL; this.mazeGrid[9][3] = MazeContents.WALL; this.mazeGrid[9][4] = MazeContents.WALL; this.mazeGrid[9][5] = MazeContents.WALL; this.mazeGrid[9][6] = MazeContents.WALL; this.mazeGrid[9][7] = MazeContents.WALL;
-  }
-
-  public static void main(String[] args) {
-    Maze maze = new Maze();
-
   }
 }
