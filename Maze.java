@@ -1,5 +1,5 @@
 /* This class should implement the DisplayableMaze interface */
-public class Maze{
+public class Maze implements DisplayableMaze{
 
 
     /** This DemoMaze method will allow you to generate a simple maze
@@ -10,6 +10,53 @@ public class Maze{
      * * @author Tianah Gooden
      * * @version October 17th 2023
      */
+
+    MazeContents[][] mazeGrid;
+    int height; 
+    int width;
+    MazeLocation start;
+    MazeLocation finish;
+
+    /** @return height of maze grid */
+    public int getHeight() {
+        return this.height;
+    }
+
+    /** @return width of maze grid */
+    public int getWidth() { 
+        return this.width;
+    }
+
+    /** @return contents of maze grid at row i, column j */
+    public MazeContents getContents(int i, int j) { 
+        return mazeGrid[i][j];
+    }
+
+    /** @return true if the maze grid is explorable at row i, column j */
+    public Boolean isExplorable(int i, int j) {
+
+        if (0 > i || i >= height || 0 > j || j >= width) {
+            return false; 
+        }
+        if (mazeGrid[i][j] == MazeContents.WALL) {
+            return false; 
+        }
+        if (mazeGrid[i][j] == MazeContents.VISITED) { 
+            return false;
+        }
+        return true;
+    }
+
+    /** @return location of maze start point */
+    public MazeLocation getStart() {
+        return this.start; 
+    }
+
+    /** @return location of maze finish point */
+    public MazeLocation getFinish() {
+        return this.finish;
+    }
+
     public void initDemoMaze(){ //String fileName, 
         this.height = 10;
         this.width = 8;
@@ -29,4 +76,8 @@ public class Maze{
         this.mazeGrid[9][0] = MazeContents.WALL; this.mazeGrid[9][1] = MazeContents.WALL; this.mazeGrid[9][2] = MazeContents.WALL; this.mazeGrid[9][3] = MazeContents.WALL; this.mazeGrid[9][4] = MazeContents.WALL; this.mazeGrid[9][5] = MazeContents.WALL; this.mazeGrid[9][6] = MazeContents.WALL; this.mazeGrid[9][7] = MazeContents.WALL;
   }
 
+  public static void main(String[] args) {
+    Maze maze = new Maze();
+
+  }
 }

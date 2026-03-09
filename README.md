@@ -4,7 +4,7 @@ Your readme should include the following information. Each student needs to subm
 
 ## Basic Information
 
-Your Name:
+Your Name: Michelle Jiang
 
 Other collaborators you worked with, including TAs (and feel free to give a shoutout to anyone who was particularly helpful):
 
