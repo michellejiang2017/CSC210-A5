@@ -15,4 +15,8 @@ Any references used besides JavaDoc and course materials:
 
 Do you have any remaining questions about this assignment?
 
+Not really
+
 Reflection on your experience with this assignment:
+
+Honestly, I found this assignment pretty hard, I think a lot of it took a while to understand and maybe I'm just tired but overall it was a good process and I learned a lot. 
