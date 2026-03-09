@@ -15,10 +15,29 @@ public class Maze implements DisplayableMaze{
      * * @version October 17th 2023
      */
 
+    /**
+     * Represents the contents of a maze grid square. A square can be a WALL, OPEN, VISITED, DEAD_END, or PATH.
+     */
     MazeContents[][] mazeGrid;
+
+    /**
+     * Represents the dimensions of the maze grid, the location of the start square, and the location of the finish square.
+     */
     int height; 
+
+    /**
+     * Represents the dimensions of the maze grid, the location of the start square, and the location of the finish square.
+     */
     int width;
+
+    /**
+     * Represents the dimensions of the maze grid, the location of the start square, and the location of the finish square.
+     */
     MazeLocation start;
+
+    /**
+     * Represents the dimensions of the maze grid, the location of the start square, and the location of the finish square.
+     */
     MazeLocation finish;
 
     /** @return height of maze grid */
@@ -31,12 +50,20 @@ public class Maze implements DisplayableMaze{
         return this.width;
     }
 
-    /** @return contents of maze grid at row i, column j */
+    /** 
+     * Returns the contents of the maze grid at row i, column j.
+     * @param i the row index of the maze grid to check
+     * @param j the column index of the maze grid to check
+     * @return contents of maze grid at row i, column j */
     public MazeContents getContents(int i, int j) { 
         return mazeGrid[i][j];
     }
 
-    /** @return true if the maze grid is explorable at row i, column j */
+    /** 
+     * Checks if the maze grid is explorable at row i, column j. A square is explorable if it is within the bounds of the maze and is not a WALL, VISITED, or DEAD_END.
+      * @param i the row index to check
+      * @param j the column index to check
+     * @return true if the maze grid is explorable at row i, column j */
     public Boolean isExplorable(int i, int j) {
         if (i < 0 || i >= height || j < 0 || j >= width) {
             return false;
@@ -98,12 +125,15 @@ public class Maze implements DisplayableMaze{
         }
     }
 
+    /**
+     * Initializes a demo maze for testing purposes. You can modify the maze layout as needed.
+     */
     public void initDemoMaze(){ //String fileName, 
         this.height = 10;
         this.width = 8;
         this.mazeGrid = new MazeContents[height][width];
-        this.start = new MazeLocation(1,1);
-        this.finish = new MazeLocation(8,6);
+        this.start = new MazeLocation(1, 1);
+        this.finish = new MazeLocation(8, 6);
 
         this.mazeGrid[0][0] = MazeContents.WALL; this.mazeGrid[0][1] = MazeContents.WALL; this.mazeGrid[0][2] = MazeContents.WALL; this.mazeGrid[0][3] = MazeContents.WALL; this.mazeGrid[0][4] = MazeContents.WALL; this.mazeGrid[0][5] = MazeContents.WALL; this.mazeGrid[0][6] = MazeContents.WALL; this.mazeGrid[0][7] = MazeContents.WALL;
         this.mazeGrid[1][0] = MazeContents.WALL; this.mazeGrid[1][1] = MazeContents.OPEN; this.mazeGrid[1][2] = MazeContents.OPEN; this.mazeGrid[1][3] = MazeContents.OPEN; this.mazeGrid[1][4] = MazeContents.OPEN; this.mazeGrid[1][5] = MazeContents.OPEN; this.mazeGrid[1][6] = MazeContents.WALL; this.mazeGrid[1][7] = MazeContents.WALL;

@@ -5,6 +5,11 @@ import java.util.Scanner;
  */
 class SolveMaze {
 
+  /**
+   * Reads a maze from a file and returns a Scanner object for it. Exits with an error message if the file cannot be found.
+   * @param fname the name of the maze file to read
+   * @return a Scanner object for the maze file
+   */
   public static Scanner readMaze(String fname){
     Scanner file = null;
     try {
@@ -17,7 +22,11 @@ class SolveMaze {
   }
 
   /**
-   * Recursively searches for a path from the current position to the finish.
+   * Recursive method to solve the maze. Returns true if a path from (i, j) to the finish exists, false otherwise.
+   * @param maze the maze to solve
+   * @param i the current row index
+   * @param j the current column index
+   * @return true if a path from (i, j) to the finish exists,
    */
   public static boolean solve(Maze maze, int i, int j) { 
        // base case: success
@@ -52,6 +61,10 @@ class SolveMaze {
         
   }
   
+  /**
+   * Main method to read a maze file, solve the maze, and display the solution. If no command-line argument is provided, it defaults to reading "maze3".
+   * @param args command-line arguments, where args[0] is the maze file name (optional)
+   */
   public static void main(String[] args) {
     Scanner file = null;
     if(args.length <= 0) {
