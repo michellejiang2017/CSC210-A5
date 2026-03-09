@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-/* This class should implement the DisplayableMaze interface */
+/**
+ * Represents a maze loaded from a file and stores its grid, start, and finish.
+ */
 public class Maze implements DisplayableMaze{
 
 
@@ -36,18 +38,21 @@ public class Maze implements DisplayableMaze{
 
     /** @return true if the maze grid is explorable at row i, column j */
     public Boolean isExplorable(int i, int j) {
-
-        if (0 > i || i >= height || 0 > j || j >= width) {
-            return false; 
+        if (i < 0 || i >= height || j < 0 || j >= width) {
+            return false;
         }
         if (mazeGrid[i][j] == MazeContents.WALL) {
-            return false; 
+            return false;
         }
-        if (mazeGrid[i][j] == MazeContents.VISITED) { 
+        if (mazeGrid[i][j] == MazeContents.VISITED) {
+            return false;
+        }
+        if (mazeGrid[i][j] == MazeContents.DEAD_END) {
             return false;
         }
         return true;
     }
+    
 
     /** @return location of maze start point */
     public MazeLocation getStart() {
@@ -59,6 +64,10 @@ public class Maze implements DisplayableMaze{
         return this.finish;
     }
 
+    /**
+     * Reads a maze file and constructs the maze grid.
+     * @param file scanner for the maze file
+     */
     public void makeMaze(Scanner file) {
         ArrayList<String> lines = new ArrayList<>();
 
@@ -76,16 +85,13 @@ public class Maze implements DisplayableMaze{
 
                 if (c == '#') {
                     mazeGrid[i][j] = MazeContents.WALL;
-                }
-                else if (c == 'S') {
+                } else if (c == 'S') {
                     mazeGrid[i][j] = MazeContents.OPEN;
                     start = new MazeLocation(i, j);
-                }
-                else if (c == 'F') {
+                } else if (c == 'F') {
                     mazeGrid[i][j] = MazeContents.OPEN;
                     finish = new MazeLocation(i, j);
-                }
-                else {
+                } else {
                     mazeGrid[i][j] = MazeContents.OPEN;
                 }
             }

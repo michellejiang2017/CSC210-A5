@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.Scanner;
-
+/**
+ * Recursive maze solving program.
+ */
 class SolveMaze {
 
   public static Scanner readMaze(String fname){
@@ -14,6 +16,9 @@ class SolveMaze {
     return file;
   }
 
+  /**
+   * Recursively searches for a path from the current position to the finish.
+   */
   public static boolean solve(Maze maze, int i, int j) { 
        // base case: success
       MazeLocation current = new MazeLocation(i, j);
@@ -49,10 +54,9 @@ class SolveMaze {
   
   public static void main(String[] args) {
     Scanner file = null;
-    if(args.length <= 0){
+    if(args.length <= 0) {
       file = readMaze("maze3");
-    }
-    else{
+    } else{
       file = readMaze(args[0]);
     }
     
