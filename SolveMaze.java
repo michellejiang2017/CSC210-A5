@@ -24,9 +24,8 @@ class SolveMaze {
   /**
    * Recursive method to solve the maze. Returns true if a path from (i, j) to the finish exists, false otherwise.
    * @param maze the maze to solve
-   * @param i the current row index
-   * @param j the current column index
-   * @return true if a path from (i, j) to the finish exists,
+   * @param current the current location in the maze
+   * @return true if a path to the finish exists from the current location, false otherwise
    */
   public static boolean solve(Maze maze, MazeLocation current) { 
        // base case: success
