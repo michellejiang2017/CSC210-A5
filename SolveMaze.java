@@ -28,9 +28,11 @@ class SolveMaze {
    * @param j the current column index
    * @return true if a path from (i, j) to the finish exists,
    */
-  public static boolean solve(Maze maze, int i, int j) { 
+  public static boolean solve(Maze maze, MazeLocation current) { 
        // base case: success
-      if (i == maze.getFinish().getRow() && j == maze.getFinish().getCol()) {
+       int i = current.getRow(); 
+       int j = current.getCol();
+      if (current.equals(maze.getFinish())) {
         maze.mazeGrid[i][j] = MazeContents.PATH;
         return true;
       }
@@ -42,10 +44,10 @@ class SolveMaze {
       maze.mazeGrid[i][j] = MazeContents.VISITED;
         // recursively try 4 directions
 
-      boolean success = solve(maze, i - 1, j)
-      || solve(maze, i + 1, j)
-      || solve(maze, i, j + 1)
-      || solve(maze, i, j - 1);
+      boolean success = solve(maze, current.neighbor(MazeDirection.NORTH))
+      || solve(maze, current.neighbor(MazeDirection.SOUTH))
+      || solve(maze, current.neighbor(MazeDirection.EAST))
+      || solve(maze, current.neighbor(MazeDirection.WEST));
         // if any worked, mark PATH and return true
         // otherwise mark DEAD_END and return false
         if (success) { 
@@ -53,7 +55,7 @@ class SolveMaze {
           return true; 
         } else {
           maze.mazeGrid[i][j] = MazeContents.DEAD_END;
-          return false; 
+          return success; 
         }
         
   }
@@ -72,7 +74,7 @@ class SolveMaze {
 
     Maze maze = new Maze(file);
     MazeLocation start = maze.getStart();
-    boolean solved = solve(maze, start.getRow(), start.getCol());
+    boolean solved = solve(maze, start);
     System.out.println(solved);
 }
 }
