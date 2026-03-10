@@ -71,10 +71,9 @@ class SolveMaze {
         file = readMaze(args[0]);
     }
 
-    Maze maze = new Maze();
-    maze.makeMaze(file);
+    Maze maze = new Maze(file);
     MazeLocation start = maze.getStart();
     boolean solved = solve(maze, start.getRow(), start.getCol());
-    System.out.println("Solved: " + solved);
-  }
+    System.out.println(solved);
+}
 }
