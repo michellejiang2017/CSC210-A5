@@ -43,12 +43,10 @@ class SolveMaze {
       maze.mazeGrid[i][j] = MazeContents.VISITED;
         // recursively try 4 directions
 
-      boolean north = solve(maze, i-1, j); 
-      boolean south = solve(maze, i+1, j);
-      boolean east = solve(maze, i, j+1);
-      boolean west = solve(maze, i, j-1);
-
-      boolean success = north || south || east || west;
+      boolean success = solve(maze, i - 1, j)
+      || solve(maze, i + 1, j)
+      || solve(maze, i, j + 1)
+      || solve(maze, i, j - 1);
         // if any worked, mark PATH and return true
         // otherwise mark DEAD_END and return false
         if (success) { 

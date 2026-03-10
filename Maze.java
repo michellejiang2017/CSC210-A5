@@ -48,7 +48,7 @@ public class Maze implements DisplayableMaze{
 
     /**
      * Constructor with file. 
-     * @param file
+     * @param file scanner for the maze file
      */
     public Maze(Scanner file) {
         makeMaze(file);
@@ -89,6 +89,9 @@ public class Maze implements DisplayableMaze{
             return false;
         }
         if (mazeGrid[i][j] == MazeContents.DEAD_END) {
+            return false;
+        }
+        if (mazeGrid[i][j] == MazeContents.PATH) {
             return false;
         }
         return true;
