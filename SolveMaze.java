@@ -30,8 +30,7 @@ class SolveMaze {
    */
   public static boolean solve(Maze maze, int i, int j) { 
        // base case: success
-      MazeLocation current = new MazeLocation(i, j);
-      if (maze.getFinish().equals(current)) {
+      if (i == maze.getFinish().getRow() && j == maze.getFinish().getCol()) {
         maze.mazeGrid[i][j] = MazeContents.PATH;
         return true;
       }
