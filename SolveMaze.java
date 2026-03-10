@@ -66,18 +66,16 @@ class SolveMaze {
    * @param args command-line arguments, where args[0] is the maze file name (optional)
    */
   public static void main(String[] args) {
-    Scanner file = null;
-    if(args.length <= 0) {
-      file = readMaze("maze3");
-    } else{
-      file = readMaze(args[0]);
+    Scanner file;
+    if (args.length <= 0) {
+        file = readMaze("maze1");
+    } else {
+        file = readMaze(args[0]);
     }
-    
-    Maze maze = new Maze();
-    maze.makeMaze(file);
-    MazeViewer viewer = new MazeViewer(maze);
+
+    Maze maze = new Maze(file);
     MazeLocation start = maze.getStart();
     boolean solved = solve(maze, start.getRow(), start.getCol());
     System.out.println("Solved: " + solved);
-  }
+}
 }

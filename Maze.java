@@ -40,6 +40,20 @@ public class Maze implements DisplayableMaze{
      */
     MazeLocation finish;
 
+    /**
+     * Constructs an empty maze.
+     */
+    public Maze() {
+    }
+
+    /**
+     * Constructor with file. 
+     * @param file
+     */
+    public Maze(Scanner file) {
+        makeMaze(file);
+    }
+
     /** @return height of maze grid */
     public int getHeight() {
         return this.height;
